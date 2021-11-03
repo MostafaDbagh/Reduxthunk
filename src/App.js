@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+import {useSelector,useDispatch} from 'react-redux'
+import {Incrementasync,Dncrementasync,getTitle} from './actions/action';
 function App() {
+  const counter = useSelector(c  => c.Reducer);
+  const Title = useSelector(c  => c.Title);
+  const dispatch = useDispatch();
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {counter} <br/><br/>
+      {console.log(Title)}
+   <button onClick={()=>dispatch(Incrementasync())}  >increase slowly</button>
+ <button onClick={()=>dispatch(Dncrementasync())} >decrease slowly</button> 
+ <button onClick={()=>dispatch(getTitle())} >get data</button> 
+ <h2> here is the title:{Title}</h2>
     </div>
   );
 }
